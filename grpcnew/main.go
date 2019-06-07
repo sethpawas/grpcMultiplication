@@ -1,17 +1,14 @@
 package main
 
 import (
-	"training/grpcnew/client"
-	"training/grpcnew/server"
+	"grpcMultiplication/grpcnew/server"
 )
 
 func main() {
 
-	go func() {
-		server.Start("50051")
-	}()
+	server.Start("50051")
 
 	//time.Sleep(2 * time.Second)
 
-	client.Start("50051")
+	//client.Start("50051")
 }

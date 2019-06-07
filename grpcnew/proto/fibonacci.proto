@@ -2,7 +2,9 @@ syntax = "proto3";
 
 package grpcnew;
 
-option go_package = "fibonaccipb";
+//option go_package = "fibonaccipb";
+option java_package = "com.proto.calculator";
+option java_multiple_files = true;
 
 message Request {
 int32 number = 1;
@@ -22,10 +24,10 @@ int32 result = 1;
 //}
 service CalculatorService {
 // Unary
-//rpc FibonacciSeries (Request) returns (FibonacciResponse) {};
+rpc FibonacciSeries (Request) returns (FibonacciResponse) {};
 
 // Server Streaming
-rpc FibonacciSeries (Request) returns (stream FibonacciResponse) {};
+//rpc FibonacciSeries (Request) returns (stream FibonacciResponse) {};
 
 // Client Streaming
 //rpc Average (stream CalculatorRequest) returns (CalculatorAverageResponse) {};
@@ -33,3 +35,7 @@ rpc FibonacciSeries (Request) returns (stream FibonacciResponse) {};
 // BiDirectional Streaming
 //rpc OddEven (stream CalculatorRequest) returns (stream CalculatorOddEvenResponse) {};
 }
+
+
+//Command to compile .proto file
+//protoc -I go/src/training/NEW/proto/ go/src/training/NEW/proto/*.proto --go_out=plugins=grpc:go/src/training/NEW/calculatorpb/proto/
